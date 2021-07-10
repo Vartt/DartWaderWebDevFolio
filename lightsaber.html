@@ -1,0 +1,82 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Light Saber</title>
+
+    <style>
+        body {
+            background: url(img/dark-side-space-weapon-abstract-vector-background-illustration-117129677.jpg);
+        }
+
+        .handle {
+            width: 200px;
+            height: 30px;
+            background-image: url(https://www.sword-buyers-guide.com/images/star-wars-2369371_1280.png);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position: center;
+            position: relative;
+            top: 480px;
+            left: 25%; 
+        }
+
+        .blade {
+            width: 0;
+            height: 20px;
+            background-color: rgb(253, 253, 253);
+            position: absolute;
+            top: 5.5px;
+            left: 177px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            box-shadow: 0 0 20px 7px rgb(146, 26, 226), inset 0 0 8px 3px rgb(172, 14, 245);
+
+            transition: width .7s;
+        }
+
+        .handle:hover .blade {
+            width: 400px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="handle">
+        <div class="blade"></div>
+    </div>
+
+<script>
+
+    // Get div (.handle)
+    const handle = document.querySelector(".handle");
+    
+    // Get tracks in code
+    const openTrack = new Audio("sound/coolsaber.mp3");
+    const continuousTrack = new Audio("sound/Hum2.mp3");
+    const saberOff = new Audio("sound/turnOff.mp3");
+
+    // Add event listeners to handle (div => light saber handle)
+    handle.addEventListener("mouseover", handler);
+    
+    handle.addEventListener("mouseout", () => {
+        continuousTrack.loop = false;
+        saberOff.play();
+    });
+    
+    function handler() {
+        openTrack.play();
+        continuousTrack.play();
+        continuousTrack.loop = true;  
+    }    
+    
+    
+
+</script>
+
+</body>
+
+</html>
